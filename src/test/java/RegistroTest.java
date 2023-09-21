@@ -11,6 +11,7 @@ public class RegistroTest {
     int contadorMayoresEdad;
     int contadorMenoresEdad;
     int contadorTerceraEdad;
+    int[] contadorEstadoCivil;
 
     @BeforeEach
     public void init(){
@@ -27,6 +28,7 @@ public class RegistroTest {
         contadorMayoresEdad = 4;
         contadorMenoresEdad = 1;
         contadorTerceraEdad = 1;
+        contadorEstadoCivil = new int[]{2, 3};
 
     }
 
@@ -66,6 +68,18 @@ public class RegistroTest {
             contadorCorrecto = false;
         }
         assertTrue(contadorCorrecto);
+    }
+
+    @Test
+    public void contarPersonasSegunEstadoCivilTest(){
+        boolean respuestaCorrecta = true;
+        int[] datosObtenidos = Registro.contarPersonasSegunEstadoCivil(ejemploRegistro);
+        for(int i=0; i < datosObtenidos.length; i++){
+            if(datosObtenidos[i] != contadorEstadoCivil[i]){
+                respuestaCorrecta = false;
+            }
+        }
+        assertTrue(respuestaCorrecta);
     }
 
 
