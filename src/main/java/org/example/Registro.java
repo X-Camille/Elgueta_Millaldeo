@@ -78,7 +78,7 @@ public class Registro {
         Scanner scanner = new Scanner(System.in);
         if (index >= 0 && index < registro.length) {
             System.out.println("Ingrese el nombre de la persona:");
-            registro[index][0] = scanner.nextLine();
+            registro[index][0] = ingresarNombre();
 
             registro[index][1] = ingresarEstadoCivil();
 
@@ -115,6 +115,28 @@ public class Registro {
         return String.valueOf(edad);
     }
 
+    public static String ingresarNombre() {
+        Scanner scanner = new Scanner(System.in);
+        String nombre;
+        do{
+            System.out.print("Ingrese su nombre: ");
+            nombre = scanner.nextLine();
+        } while (!validarNombre(nombre)); // Seguirá pidiendo el input del nombre hasta que el nombre ingresado sea válido
+        return nombre;
+    }
+    public static boolean validarNombre(String nombre) {
+        if(nombre == null || nombre.trim().isEmpty() || nombre.length() > 30){ // El nombre no debe esta vacío al quitar los espacios en blanco, ser nulo o contener más de 30 caracteres
+            System.out.println("Nombre no válido. Inténtelo nuevamente.");
+            return false;
+        }
+        for (int i = 0; i < nombre.length(); i++) {
+            if (!Character.isLetter(nombre.charAt(i)) && !Character.isWhitespace(nombre.charAt(i))) { // Si el caracter no es una letra ni tampoco es un espacio blanco, se considera que el nombre contiene elementos no válidos
+                System.out.println("El nombre no puede contener dígitos. Inténtelo nuevamente.");
+                return false;
+            }
+        }
+        return true;
+    }
     public static boolean validarEdad(int edad){
         if(edad > 0 && edad < 130){
             return true;
