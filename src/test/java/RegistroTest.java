@@ -82,6 +82,5 @@ public class RegistroTest {
         assertTrue(respuestaCorrecta);
     }
 
-
 }
 
