@@ -5,9 +5,12 @@ import java.util.Scanner;
 
 public class Registro {
     public static void main(String[] args) {
+        menu();
+    }
+
+    public static void menu(){
         String[][] registro = new String[50][3]; // se le declara como tipo String
         int personasAgregadas = 0;
-
         int opcion;
 
         while (personasAgregadas < 50) {
@@ -37,7 +40,6 @@ public class Registro {
                     System.err.println("Opción inválida");
             }
         }
-
     }
 
     public static void mostrarOpciones() {
