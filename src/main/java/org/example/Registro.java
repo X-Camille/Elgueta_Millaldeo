@@ -80,14 +80,29 @@ public class Registro {
             System.out.println("Ingrese el nombre de la persona:");
             registro[index][0] = scanner.nextLine();
 
-            System.out.println("Ingrese el estado civil de la persona:");
-            registro[index][1] = scanner.nextLine();
+            registro[index][1] = ingresarEstadoCivil();
 
             registro[index][2] = ingresarEdad();
 
             System.out.println("Persona agregada.");
         } else {
             System.out.println("No hay espacio para agregar más personas.");
+        }
+    }
+
+    public static String ingresarEstadoCivil() {
+        Scanner scanner = new Scanner(System.in);
+        String estadoCivil;
+
+        while (true) {
+            System.out.println("Ingrese el estado civil (soltero/a o casado/a):");
+            estadoCivil = scanner.nextLine().toLowerCase();
+
+            if (estadoCivil.equals("soltero") || estadoCivil.equals("soltera") || estadoCivil.equals("casado") || estadoCivil.equals("casada")) {
+                return estadoCivil;
+            } else {
+                System.err.println("Estado civil no válido. Ingrese 'soltero/a' o 'casado/a'.");
+            }
         }
     }
 
